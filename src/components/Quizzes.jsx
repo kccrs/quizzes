@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import Questions from './Questions';
+import Questions from './Questions';
 
 export default class Quizzes extends Component {
   constructor() {
     super();
     this.state = {
-      quizzes: [],
+
     };
   }
 
@@ -14,36 +14,31 @@ export default class Quizzes extends Component {
     axios.get('/quizzes')
       .then((response) => {
         this.setState({
-          quizzes: response.data.quizzes[0]
+          quizzes: response.data.quizzes
         });
-        console.log(this.state.quizzes);
       })
       .catch((error) => {
         console.log(error);
-      });
+    });
   }
 
   render() {
-    return(
-     <ul>
-     <h1>{this.state.quizzes.title}</h1>
-     {this.state.quizzes.questions ? this.state.quizzes.questions.map((quiz) => {
-       return (
-         <section id="quiz" key={quiz.id}>
-           <h2 id="quiz-question">{quiz.title}</h2>
-           {quiz.answers.map((answer, answerIndex) => {
-             return (
-               <li id="answer" key={answerIndex}>
-                 {answer.title}
-               </li>
-             )
-           })}
-         </section>
-       )
-     }) : <h3>There are no quizzes.</h3>
-   }
-
-     </ul>
-   )
+    return (
+      this.state.quizzes ?
+      <div className="Quizzes">
+        <h1>{this.state.quizzes[0].title}</h1>
+        <section className="all-questions">
+          { this.state.quizzes[0].questions.map(q =>
+              <Questions
+                key={ Math.random() }
+                question={ q.title }
+                answers={ q.answers }
+                name={ q.id }
+              /> )}
+        </section>
+      </div>
+     :
+      <h3>There are no quizzes</h3>
+  );
  }
  }
