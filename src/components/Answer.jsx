@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Answers = (props) => {
+const Answer = (props) => {
   return (
     <div className="answers">
       <label htmlFor={props.id}>
@@ -11,4 +11,4 @@ const Answers = (props) => {
   );
 };
 
-export default Answers;
+export default Answer;

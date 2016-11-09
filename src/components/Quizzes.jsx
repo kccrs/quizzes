@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Questions from './Questions';
+import Question from './Question';
 
 export default class Quizzes extends Component {
   constructor() {
@@ -29,7 +29,7 @@ export default class Quizzes extends Component {
         <h1>{this.state.quizzes[0].title}</h1>
         <section className="all-questions">
           { this.state.quizzes[0].questions.map(q =>
-              <Questions
+              <Question
                 key={ Math.random() }
                 question={ q.title }
                 answers={ q.answers }

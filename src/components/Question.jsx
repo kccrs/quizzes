@@ -1,5 +1,5 @@
 import React from 'react';
-import Answers from './Answers';
+import Answer from './Answer';
 
 const Questions = (props) => {
 
@@ -9,7 +9,7 @@ const Questions = (props) => {
         { props.question }
       </h2>
       { props.answers.map( a =>
-        <Answers
+        <Answer
           key={ Math.random() }
           text={ a.title }
           value={ a.score }
