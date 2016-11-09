@@ -11,7 +11,6 @@ const Questions = (props) => {
       { props.answers.map( a =>
         <Answers
           key={ Math.random() }
-          name={ props.name }
           text={ a.title }
           value={ a.score }
         />
